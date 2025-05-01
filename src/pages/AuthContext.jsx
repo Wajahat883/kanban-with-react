@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import welcomeimage from '../pages/welcome-img.jpg'
+import welcomeimage from './welcome-img.jpg'
 
 export const AuthContext = createContext();
 

@@ -1,17 +1,67 @@
-import { Routes,Route } from "react-router-dom"
-import Login from './pages/Login'
-import Signup from'./pages/Singup'
-import Dashboard from './pages/Dashboard'
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import Sidebar from "./pages/Sidebar";
+import KanbanBoard from "./pages/KanbanBoard";
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Board from "./pages/Board";
+import Dashboard from './pages/Dashboard';
+import Navbar from "./pages/Navbar";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
+function Layout() {
+  const location = useLocation();
 
-function App(){
-  return(
-    <Routes>
-      <Route path="/" element={<Login/>}/>
-      <Route path="signup" element={<Signup/>}/>
-      <Route path="dashboard" element={<Dashboard/>}/>
-    </Routes>
-  )
+  // In routes pe sidebar aur navbar hide karni hai
+  const hideSidebarRoutes = ['/', '/signup'];
+
+  const shouldHideSidebar = hideSidebarRoutes.includes(location.pathname);
+
+  return (
+    <div className="flex">
+      {!shouldHideSidebar && <Sidebar />}
+      <div className={shouldHideSidebar ? "flex-1 ml-0" : "flex-1 ml-64"}>
+        {!shouldHideSidebar && <Navbar />}
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } />
+          <Route path="/kanban" element={
+            <ProtectedRoute>
+              <KanbanBoard />
+            </ProtectedRoute>
+          } />
+          <Route path="/board" element={
+            <ProtectedRoute>
+              <Board />
+            </ProtectedRoute>
+          } />
+          <Route path="/tasks" element={
+            <ProtectedRoute>
+              <div>Tasks Page</div>
+            </ProtectedRoute>
+          } />
+          <Route path="/issues" element={
+            <ProtectedRoute>
+              <div>Issues Page</div>
+            </ProtectedRoute>
+          } />
+          <Route path="*" element={<div className="p-6">404 - Not Found</div>} />
+        </Routes>
+      </div>
+    </div>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <Router>
+      <Layout />
+    </Router>
+  );
+}
+
+export default App;

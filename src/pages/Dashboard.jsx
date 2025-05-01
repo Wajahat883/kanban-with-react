@@ -1,7 +1,11 @@
+import Board from "./Board"
+
+
 export default function Dashboard(){
     return(
-        <div className="h-screen flex justify-center items-center">
+        <div >
             <h2 className="text-2xl">Dashboard</h2>
+            <Board/>
         </div>
     )
 }
