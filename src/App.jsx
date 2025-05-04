@@ -11,7 +11,7 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 function Layout() {
   const location = useLocation();
 
-  // In routes pe sidebar aur navbar hide karni hai
+
   const hideSidebarRoutes = ['/', '/signup'];
 
   const shouldHideSidebar = hideSidebarRoutes.includes(location.pathname);
