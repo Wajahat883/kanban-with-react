@@ -7,7 +7,7 @@ import Board from "./pages/Board";
 import Dashboard from './pages/Dashboard';
 import Navbar from "./pages/Navbar";
 import ProtectedRoute from "./pages/ProtectedRoute";
-
+import { TaskProvider } from './pages/TaskContext';
 function Layout() {
   const location = useLocation();
 
@@ -59,7 +59,9 @@ function Layout() {
 function App() {
   return (
     <Router>
-      <Layout />
+      <TaskProvider> 
+        <Layout />
+      </TaskProvider>
     </Router>
   );
 }

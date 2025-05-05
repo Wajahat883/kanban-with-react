@@ -14,7 +14,7 @@ setDescription("")
     }
     return(
         <form onSubmit={handleSubmit} className="mb-4">
-            <input type="text"
+            {/* <input type="text"
             placeholder="Task Title"
             value={title}
             onChange={(e)=>setTitle(e.target.value)}
@@ -28,7 +28,7 @@ setDescription("")
             <button type="submit"
             className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
                 Add Task
-            </button>
+            </button> */}
         </form>
     )
 }
