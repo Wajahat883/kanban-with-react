@@ -14,7 +14,9 @@ export default function useKanbanBoard(){
             if( parsed&& typeof parsed==="object"&&Object.values(parsed).every((col)=>Array.isArray(col))){
                 return parsed;
             }
-        }catch (err) {}
+        }catch (err) {
+            console.log(err)
+        }
         return initialBoard
     })
     useEffect(()=>{

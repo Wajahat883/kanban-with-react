@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./useAuth";
-import AuthFormLayout from "./AuthContext";
+import AuthFormLayout from "./AuthFormLayout";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -14,6 +14,7 @@ export default function Login() {
     login(username, password);
     navigate("/dashboard");
   };
+  console.log(Login())
 
   return (
     <AuthFormLayout

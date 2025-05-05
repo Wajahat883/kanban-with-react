@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useTask } from "./TaskContext";
-import { useAuth } from "./useAuth"; // ✅ Missing import added
+import { useAuth } from "./useAuth"; 
 
 const Navbar = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const { addTask } = useTask();
-  const { user, logout } = useAuth(); // ✅ Destructuring user and logout properly
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -20,8 +20,8 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    logout(); // Logs out the user
-    navigate("/"); // Redirect after logout
+    logout(); 
+    navigate("/"); 
   };
 
   return (
@@ -34,14 +34,14 @@ const Navbar = () => {
           placeholder="Task Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="border px-3 py-1 rounded text-black"
+          className="border px-3 py-1 rounded text-black bg-white"
         />
         <input
           type="text"
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="border px-3 py-1 rounded text-black"
+          className="border px-3 py-1 rounded text-black bg-white"
         />
         <button type="submit" className="bg-blue-600 text-white px-4 py-1 rounded">
           Add

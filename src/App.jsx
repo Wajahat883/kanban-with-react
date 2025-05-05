@@ -8,12 +8,10 @@ import Dashboard from './pages/Dashboard';
 import Navbar from "./pages/Navbar";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import { TaskProvider } from './pages/TaskContext';
+
 function Layout() {
   const location = useLocation();
-
-
   const hideSidebarRoutes = ['/', '/signup'];
-
   const shouldHideSidebar = hideSidebarRoutes.includes(location.pathname);
 
   return (
@@ -22,8 +20,8 @@ function Layout() {
       <div className={shouldHideSidebar ? "flex-1 ml-0" : "flex-1 ml-64"}>
         {!shouldHideSidebar && <Navbar />}
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+         console.log( <Route path="/" element={<Login />} />)
+         console.log( <Route path="/signup" element={<Signup />} />)
           <Route path="/dashboard" element={
             <ProtectedRoute>
               <Dashboard />
