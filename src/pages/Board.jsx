@@ -1,10 +1,10 @@
 import ColumnLine from "./Column-line";
-import useKanbanBoard from '/src/pages/useKanbanBoard';
+import useKanbanBoard from "./useKanbanBoard";
 
 
 
 export default function Board(){
-   const {board ,addTask}=useKanbanBoard()
+   const [board ,addTask]=useKanbanBoard()
    const handleAdd = (column)=>{
     const title =prompt("Enter task title")
     const description = prompt("Enter task description ")
@@ -14,6 +14,7 @@ export default function Board(){
    }
    return(
     <div className="flex gap-4 p-4 overflow-auto">
+       
         {Object.entries(board).map(([columnTitle,tasks])=>
         (<div key={columnTitle}>
             <ColumnLine title={columnTitle} tasks={tasks}/>

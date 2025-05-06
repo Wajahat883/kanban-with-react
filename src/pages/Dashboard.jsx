@@ -1,9 +1,11 @@
 // Dashboard.js
 import React from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 import { useTask } from './TaskContext';
+import { useAuth } from './useAuth';
 
 const Dashboard = () => {
+  const {currentUser}=useAuth()
   const { tasks, setTasks } = useTask();
 
   const onDragEnd = (result) => {
@@ -34,6 +36,16 @@ const Dashboard = () => {
   };
 
   return (
+    <>
+    
+    
+    <div>
+      {currentUser ? (
+        <h1>Welcome, {currentUser.username}!</h1>
+      ) : (
+        <p>Please login to see your dashboard.</p>
+      )}
+    </div>
     <div style={{ display: 'flex', gap: '16px', padding: '20px' }}>
       <DragDropContext onDragEnd={onDragEnd}>
         {['all', 'pending', 'completed'].map((col) => (
@@ -82,6 +94,7 @@ const Dashboard = () => {
         ))}
       </DragDropContext>
     </div>
+    </>
   );
 };
 

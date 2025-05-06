@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import AuthFormLayout from './AuthFormLayout'; 
+import { useAuth } from './useAuth';
 
 export default function Signup() {
   
@@ -10,20 +11,26 @@ export default function Signup() {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Basic validation
-    if (password !== confirmPassword) {
-      alert("Passwords don't match");
-      return;
-    }
-
+  const { signup } = useAuth();
+  const navigate = useNavigate();
   
-    console.log('User signed up with:', { username, email, password });
   
- 
-  };
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  if (password !== confirmPassword) {
+    alert("Passwords don't match");
+    return;
+  }
+
+  try {
+    signup(username, password, email);
+    alert("Signup successful!");
+    navigate("/login");
+  } catch (error) {
+    alert(error.message);
+  }
+};
 
   return (
     <AuthFormLayout

@@ -1,10 +1,11 @@
 import { useContext } from 'react';
-import { AuthContext } from './auth-context'; // Importing AuthContext
-import welcomeimage from './welcome-img.jpg';
+import { AuthContext } from './auth-context';
+
+import welcomeImg from '../assets/welcome-img.jpg';
 import { Link } from 'react-router-dom';
 
 export default function AuthFormLayout({ children, title, subtitle, linkText, linkTo }) {
-  const { user, logout } = useContext(AuthContext); // useContext se user aur logout ko access kar rahe hain
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600">
@@ -13,7 +14,7 @@ export default function AuthFormLayout({ children, title, subtitle, linkText, li
           <h2 className="text-4xl font-bold mb-4">Welcome to</h2>
           <h1 className="text-5xl font-extrabold mb-4 text-yellow-300">Kanban Board</h1>
           <p className="text-lg mb-10">Organize your workflow visually</p>
-          <img src={welcomeimage} alt="Logo" className="w-40 h-40 object-cover rounded-full shadow-lg mt-4" />
+          <img src={welcomeImg} alt="Logo" className="w-40 h-40 object-cover rounded-full shadow-lg mt-4" />
         </div>
 
         <div className="w-1/2 p-10 flex flex-col justify-center">

@@ -11,12 +11,17 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(username, password);
-    navigate("/dashboard");
+    try {
+      login(username, password);
+      navigate("/dashboard");
+    } catch (error) {
+      alert("Login failed: " + error.message);
+    }
   };
-  console.log(Login())
+  
 
   return (
+    
     <AuthFormLayout
       title="Login"
       subtitle="Don't have an account?"
@@ -46,5 +51,6 @@ export default function Login() {
         </button>
       </form>
     </AuthFormLayout>
+    
   );
 }
