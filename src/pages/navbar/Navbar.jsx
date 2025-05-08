@@ -81,7 +81,7 @@ const Navbar = () => {
 
             {showPopup && (
               <div
-                ref={popupRef} // Attach the ref here
+                ref={popupRef} 
                 className="absolute top-full mt-2 right-0 bg-white border rounded shadow-lg p-4 w-80 z-50"
               >
                 <form onSubmit={handleSubmit} className="space-y-3">

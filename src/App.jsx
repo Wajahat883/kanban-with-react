@@ -9,6 +9,7 @@ import Navbar from "./pages/navbar/Navbar";
 import ProtectedRoute from "./pages/navbar/ProtectedRoute";
 import { TaskProvider } from './pages/Hooks/TaskContext';
 import { ToastContainer } from "react-toastify";
+import { ThemeProvider } from "./pages/Hooks/ThemeContext";
 import 'react-toastify/dist/ReactToastify.css';
 
 function Layout() {
@@ -60,10 +61,13 @@ function Layout() {
 function App() {
   return (
     <Router>
-      <TaskProvider> 
+          <ThemeProvider className="min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white">
+          <TaskProvider> 
         <Layout />
         <ToastContainer position="top-right" autoClose={3000} />
       </TaskProvider>
+          </ThemeProvider>
+     
     </Router>
   );
 }
