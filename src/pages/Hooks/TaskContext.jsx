@@ -17,9 +17,9 @@ export const TaskProvider = ({ children }) => {
       title,
       description
     };
-    setTasks(prev => ({
-      ...prev,
-      all: [...prev.all, newTask]
+    setTasks((add) => ({
+      ...add,
+      all: [...add.all, newTask]
     }));
   };
 

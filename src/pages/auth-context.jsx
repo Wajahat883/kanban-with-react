@@ -50,7 +50,7 @@ function AuthProvider({ children }) {
   };
 
   const logout = () => {
-    setCurrentUser(null); // Just logout, don't delete users
+    setCurrentUser(null); 
   };
 
   return (

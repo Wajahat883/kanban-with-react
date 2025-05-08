@@ -1,9 +1,9 @@
 import { useContext, useState, useRef, useEffect } from "react";
-import { ThemeContext } from "./ThemeContext";
+import { ThemeContext } from "../Hooks/ThemeContext";
 import { Moon, Sun, Plus } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
-import { useTask } from "./TaskContext";
-import { useAuth } from "./useAuth";
+import { useTask } from "../Hooks/TaskContext";
+import { useAuth } from "../Hooks/useAuth";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -37,7 +37,7 @@ const Navbar = () => {
     e.preventDefault();
     if (!title.trim()) return;
 
-    // Add new task
+        
     addTask({
       id: Date.now().toString(),
       name: title,

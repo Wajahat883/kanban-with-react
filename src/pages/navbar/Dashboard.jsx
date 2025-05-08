@@ -1,8 +1,8 @@
 // Dashboard.js
 import React from 'react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
-import { useTask } from './TaskContext';
-import { useAuth } from './useAuth';
+import { useTask } from '../Hooks/TaskContext';
+import { useAuth } from '../Hooks/useAuth';
 
 const Dashboard = () => {
   const {currentUser}=useAuth()

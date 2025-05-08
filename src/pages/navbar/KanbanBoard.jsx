@@ -1,6 +1,6 @@
 
-import ColumnLine from "./Column-line";
-import useKanbanBoard from "./useKanbanBoard"
+import ColumnLine from "../loginpage/Column-line";
+import useKanbanBoard from "../Hooks/useKanbanBoard"
 
 export default function KanbanBoard(){
   const {board,addTask}=useKanbanBoard()

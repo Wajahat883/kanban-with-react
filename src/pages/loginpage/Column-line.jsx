@@ -1,5 +1,5 @@
-import Taskcard from "./Taskcard";
-import TaskForm from "./TaskForm";
+import Taskcard from "../navbar/Taskcard";
+import TaskForm from "../navbar/TaskForm";
 
 export default function ColumnLine({ title, tasks,addTask }) {
   return (

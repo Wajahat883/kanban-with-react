@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
-import AuthFormLayout from './AuthFormLayout'; 
-import { useAuth } from './useAuth';
+import AuthFormLayout from '../Hooks/AuthFormLayout'; 
+import { useAuth } from '../Hooks/useAuth';
+import { toast } from 'react-toastify';
 
 export default function Signup() {
   
@@ -10,25 +11,25 @@ export default function Signup() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  // Handle form submission
+
   const { signup } = useAuth();
   const navigate = useNavigate();
   
   
 
-const handleSubmit = (e) => {
+const handleSubmit = async(e) => {
   e.preventDefault();
   if (password !== confirmPassword) {
-    alert("Passwords don't match");
+    toast.error("Passwords don't match");
     return;
   }
 
   try {
-    signup(username, password, email);
-    alert("Signup successful!");
+   await signup(username, password, email);
+    toast.success("Signup successful!")
     navigate("/login");
   } catch (error) {
-    alert(error.message);
+    toast.error("Invalid credentials: " + error.message)
   }
 };
 
@@ -100,6 +101,7 @@ const handleSubmit = (e) => {
         <div>
           <button
             type="submit"
+            
             className="w-full py-3 bg-blue-600 text-white font-semibold rounded-md"
           >
             Sign Up
@@ -108,7 +110,7 @@ const handleSubmit = (e) => {
 
     
         <p className="text-center mt-4 text-sm text-gray-500">
-          Already have an account?{" "}
+          Already have an account?{"/login "}
           <Link to="/login" className="text-blue-600 underline font-medium">
             Login here
           </Link>

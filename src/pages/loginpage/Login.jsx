@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "./useAuth";
-import AuthFormLayout from "./AuthFormLayout";
+import { useAuth } from "../Hooks/useAuth";
+import AuthFormLayout from "../Hooks/AuthFormLayout";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -9,13 +10,14 @@ export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     try {
-      login(username, password);
+     await login(username, password);
+     toast.success("Login Successful!")
       navigate("/dashboard");
     } catch (error) {
-      alert("Login failed: " + error.message);
+      toast.error("Login failed: " + error.message);
     }
   };
   

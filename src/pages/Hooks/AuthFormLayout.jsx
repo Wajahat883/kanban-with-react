@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { AuthContext } from './auth-context';
+import { AuthContext } from '../auth-context';
 
-import welcomeImg from '../assets/welcome-img.jpg';
+import welcomeImg from '../Hooks/welcome-img.jpg';
 import { Link } from 'react-router-dom';
 
 export default function AuthFormLayout({ children, title, subtitle, linkText, linkTo }) {
