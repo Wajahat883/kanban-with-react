@@ -1,0 +1,62 @@
+import { useState,useRef,useEffect,useContext } from "react";
+import { ThemeContext } from "../Hooks/ThemeContext";
+import { useAuth } from "../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import soloing from "../Hooks/solo.jpg"
+
+function AvatarDropdown (){
+     const {theme,toggleTheme}=useContext(ThemeContext);
+     const {user,logout}=useAuth()
+     const [open,setopen]=useState(false)
+     const dropdownref =useRef(null)
+     const navigate =useNavigate();
+     useEffect(()=>{
+        const handleClickOutside=(event)=>{
+            if(dropdownref.current&&!dropdownref.current.contains(event.target)){
+                setopen(false)
+            }
+        }
+        document.addEventListener("mousedown",handleClickOutside)
+        return ()=> document.removeEventListener("mousedown",handleClickOutside)
+     },[]);
+
+     const handleLogout=()=>{
+        logout();
+        navigate("/")
+     }
+     return (
+        <div className="relative" ref={dropdownref}>
+            <button onClick={()=>setopen(!open)} className="rounded-full border-2 border-white overflow-hidden w-9 h-9">
+                <img src={soloing}  alt="avatar" className="w-full h-full object-cover" />
+
+            </button>
+            {open&&(
+               <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 text-black dark:text-white border dark:border-gray-700 shadow-xl rounded-md z-50">
+          <div className="p-4 border-b dark:border-gray-600">
+            <p className="font-semibold">{user?.username}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{user?.email}</p>
+          </div>
+          <div className="p-2">
+            <button
+              onClick={toggleTheme}
+              className="w-full text-left px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
+            >
+              Toggle {theme === "light" ? "Dark" : "Light"} Mode
+            </button>
+            <button
+              onClick={handleLogout}
+              className="w-full text-left px-3 py-2 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+            )}
+        </div>
+     )
+
+}
+
+
+export default AvatarDropdown
+

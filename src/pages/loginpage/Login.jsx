@@ -34,14 +34,14 @@ export default function Login() {
         <input
           type="text"
           placeholder="Username"
-          className="border p-3 mb-3 rounded"
+           className="border p-3 mb-3 rounded text-black bg-white"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
-          className="border p-3 mb-3 rounded"
+          className="border p-3 mb-3 rounded text-black bg-white"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />

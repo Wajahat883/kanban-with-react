@@ -4,7 +4,7 @@ import { Moon, Sun, Plus } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 import { useTask } from "../Hooks/TaskContext";
 import { useAuth } from "../Hooks/useAuth";
-
+import AvatarDropdown from"../navbar/Avatardropdown"
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { addTask } = useTask();
@@ -54,7 +54,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/");
+    navigate("/"); 
   };
 
   return (
@@ -65,7 +65,7 @@ const Navbar = () => {
         <div className="flex items-center gap-4 relative">
           <button onClick={toggleTheme} className="bg-slate-700 p-2 rounded-full hover:bg-slate-600">
             {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-          </button>
+          </button>             
 
         
           <div className="relative">
@@ -123,8 +123,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <span>{user.username}</span>
-              <button onClick={handleLogout} className="bg-red-500 px-2 py-1 rounded">Logout</button>
+              <AvatarDropdown/>
             </>
           )}
         </div>
