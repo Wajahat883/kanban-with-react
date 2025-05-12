@@ -10,13 +10,13 @@ export default function AppLayout() {
 
   return (
     <div data-theme={theme} className="flex flex-col h-screen">
-      <div className="flex-1 flex flex-col bg-gray-100 dark:bg-gray-900 text-black dark:text-white">
+      <div className="flex-1 flex flex-col bg-gray-100 dark:bg-gray-950 text-black dark:text-white">
         <Navbar />
 
         <div className="flex flex-1 overflow-hidden">
           <Sidebar />
 
-          <main className="flex-1 p-4 overflow-auto bg-white dark:bg-gray-800 text-black dark:text-white">
+          <main className="flex-1 p-4 overflow-auto bg-white dark:bg-gray-950 text-black dark:text-white">
             <Outlet />
           </main>
         </div>

@@ -55,7 +55,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="relative z-50">
+    <div className="relative z-50  dark:bg-gray-900">
       <header className="flex justify-between items-center px-6 py-3 border-b border-b-gray-400">
         <h1 className="text-xl font-bold ">Kanban Board</h1>
 
