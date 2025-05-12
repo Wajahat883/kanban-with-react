@@ -11,11 +11,12 @@ export const TaskProvider = ({ children }) => {
     completed: []
   });
 
-  const addTask = ({ title, description }) => {
+  const addTask = ({ title, description ,date}) => {
     const newTask = {
       id: uuidv4(),
       title,
-      description
+      description,
+      date
     };
     setTasks((add) => ({
       ...add,

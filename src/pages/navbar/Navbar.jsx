@@ -40,7 +40,7 @@ const Navbar = () => {
         
     addTask({
       id: Date.now().toString(),
-      name: title,
+       title,
       description,
       date,
     });

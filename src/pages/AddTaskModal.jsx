@@ -1,28 +1,30 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 
+export default function AddTaskModal({ onClose, onAdd }) {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState("");
 
-export default function AddTaskModal({onClose,onAdd}){
-    const [title,setTitle]=useState("")
-    const [description ,setDescription]=useState("")
-    const [date,setDate]=useState("")
-
-    const handleSubmit =(e)=>{
-        e.preventDefault()
-        if(!title.trim()){
-            return
-        }
-        onAdd({
-            id:Date.now().toString(),
-            name:title,
-            description,
-            date
-            
-        })
-        onClose();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!title.trim()) {
+      return;
     }
-    return(
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center z-50">
-             <div className="bg-white p-6 rounded-xl w-[90%] max-w-sm">
+
+    const newTask = {
+      id: Date.now().toString(),
+      title,        
+      description,
+      date
+    };
+
+    onAdd(newTask);
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
+      <div className="bg-white p-6 rounded-xl w-[90%] max-w-sm shadow-xl">
         <h2 className="text-xl font-bold mb-4">Add New Task</h2>
         <form onSubmit={handleSubmit} className="space-y-3">
           <input
@@ -57,6 +59,6 @@ export default function AddTaskModal({onClose,onAdd}){
           </div>
         </form>
       </div>
-        </div>
-    )
+    </div>
+  );
 }
