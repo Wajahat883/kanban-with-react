@@ -56,8 +56,8 @@ const Navbar = () => {
 
   return (
     <div className="relative z-50">
-      <header className="flex justify-between items-center px-6 py-3 bg-slate-200 text-white dark:bg-slate-200">
-        <h1 className="text-xl font-bold text-black">Kanban Board</h1>
+      <header className="flex justify-between items-center px-6 py-3 bg-blue-950  text-white dark:bg-blue-950 border-b border-b-gray-400">
+        <h1 className="text-xl font-bold ">Kanban Board</h1>
 
         <div className="flex items-center gap-4 relative">
           <button onClick={toggleTheme} className="bg-slate-700 p-2 rounded-full hover:bg-slate-600">
