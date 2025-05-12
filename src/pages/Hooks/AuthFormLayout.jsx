@@ -1,11 +1,10 @@
-import { useContext } from 'react';
-import { AuthContext } from '../auth-context';
+
 
 import welcomeImg from '../Hooks/welcome-img.jpg';
 import { Link } from 'react-router-dom';
 
 export default function AuthFormLayout({ children, title, subtitle, linkText, linkTo }) {
-  const { user, logout } = useContext(AuthContext);
+ 
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600">
@@ -20,12 +19,7 @@ export default function AuthFormLayout({ children, title, subtitle, linkText, li
         <div className="w-1/2 p-10 flex flex-col justify-center">
           <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">{title}</h2>
           {children}
-          {user && (
-            <div className="mt-4 text-center">
-              <p>Welcome back, {user.username}!</p>
-              <button onClick={logout} className="text-red-600">Logout</button>
-            </div>
-          )}
+         
           <p className="text-center mt-4 text-sm text-gray-500">
             {subtitle}{" "}
             <Link to={linkTo} className="text-blue-600 underline font-medium">
