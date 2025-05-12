@@ -8,28 +8,23 @@ export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
 
   
-  useEffect(() => {
-   
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    console.log("Theme fetched from localStorage:", savedTheme); 
+ useEffect(() => {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  console.log("Theme fetched from localStorage:", savedTheme); 
 
-    
-    setTheme(savedTheme);
-    document.documentElement.classList.toggle("dark", savedTheme === "dark");
-  }, []);
+  setTheme(savedTheme);
+  document.documentElement.setAttribute("data-theme", savedTheme);
+}, []);
 
- 
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    console.log("New theme toggled to:", newTheme); 
+const toggleTheme = () => {
+  const newTheme = theme === "light" ? "dark" : "light";
+  console.log("Toggling theme to:", newTheme); 
 
-    setTheme(newTheme); 
-    localStorage.setItem("theme", newTheme); 
+  setTheme(newTheme); 
+  localStorage.setItem("theme", newTheme); 
+  document.documentElement.setAttribute("data-theme", newTheme);
+};
 
-   
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-    console.log("Dark class added:", newTheme === "dark"); 
-  };
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
