@@ -1,12 +1,12 @@
-import { useContext, useState, useRef, useEffect } from "react";
-import { ThemeContext } from "../Hooks/ThemeContext";
-import { Moon, Sun, Plus } from "lucide-react";
+import {  useState, useRef, useEffect } from "react";
+
+import { Plus } from "lucide-react";
 import {  Link } from "react-router-dom";
 import { useTask } from "../Hooks/TaskContext";
 import { useAuth } from "../Hooks/useAuth";
 import AvatarDropdown from"../navbar/Avatardropdown"
 const Navbar = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  
   const { addTask } = useTask();
   const { user,  } = useAuth();
 
@@ -60,9 +60,7 @@ const Navbar = () => {
         <h1 className="text-xl font-bold ">Kanban Board</h1>
 
         <div className="flex items-center gap-4 relative">
-          <button onClick={toggleTheme} className="bg-slate-700 p-2 rounded-full hover:bg-slate-600">
-            {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-          </button>             
+                     
 
         
           <div className="relative">

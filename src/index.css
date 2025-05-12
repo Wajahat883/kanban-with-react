@@ -2,14 +2,3 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 /* Default light mode */
-body {
-    background-color: white;
-    color: black;
-  }
-  
-  /* Dark mode styles */
-  .dark body {
-    background-color: black;
-    color: white;
-  }
-  

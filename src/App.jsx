@@ -1,8 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import KanbanBoard from "./pages/navbar/KanbanBoard";
+import KanbanBoard from "./pages/navbar/KanbanProjects";
 import Login from "./pages/loginpage/Login";
 import Signup from "./pages/loginpage/signup";
-import Board from "./pages/loginpage/Board";
 import Dashboard from "./pages/navbar/Dashboard";
 import ProtectedRoute from "./pages/navbar/ProtectedRoute";
 import AppLayout from "./pages/navbar/Applayout";
@@ -33,11 +32,7 @@ function App() {
                   <KanbanBoard />
                 </ProtectedRoute>
               } />
-              <Route path="/board" element={
-                <ProtectedRoute>
-                  <Board />
-                </ProtectedRoute>
-              } />
+             
               <Route path="/tasks" element={
                 <ProtectedRoute>
                   <div>Tasks Page</div>

@@ -42,12 +42,12 @@ const email = storedUser?.email||"No email found"
             <p className="text-sm text-gray-500 dark:text-gray-400">{email}</p>
           </div>
           <div className="p-2">
-            <button
-              onClick={toggleTheme}
-              className="w-full text-left px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
-            >
-              Toggle {theme === "light" ? "Dark" : "Light"} Mode
-            </button>
+           <button
+             onClick={toggleTheme}
+               className="w-full text-left px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+              Toggle {theme === "dark" ? "Light Mode" : "Dark Mode"} 
+              </button>
             <button
               onClick={handleLogout}
               className="w-full text-left px-3 py-2 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
