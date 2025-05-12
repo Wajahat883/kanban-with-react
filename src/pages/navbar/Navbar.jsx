@@ -1,15 +1,15 @@
 import { useContext, useState, useRef, useEffect } from "react";
 import { ThemeContext } from "../Hooks/ThemeContext";
 import { Moon, Sun, Plus } from "lucide-react";
-import { useNavigate, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import { useTask } from "../Hooks/TaskContext";
 import { useAuth } from "../Hooks/useAuth";
 import AvatarDropdown from"../navbar/Avatardropdown"
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { addTask } = useTask();
-  const { user, logout } = useAuth();
-  const navigate = useNavigate();
+  const { user,  } = useAuth();
+
 
   // const [showModal, setShowModal] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
@@ -52,15 +52,12 @@ const Navbar = () => {
     setShowPopup(false);
   };
 
-  const handleLogout = () => {
-    logout();
-    navigate("/"); 
-  };
+
 
   return (
     <div className="relative z-50">
-      <header className="flex justify-between items-center px-6 py-3 bg-slate-800 text-white dark:bg-slate-900">
-        <h1 className="text-xl font-bold">Kanban Board</h1>
+      <header className="flex justify-between items-center px-6 py-3 bg-slate-200 text-white dark:bg-slate-200">
+        <h1 className="text-xl font-bold text-black">Kanban Board</h1>
 
         <div className="flex items-center gap-4 relative">
           <button onClick={toggleTheme} className="bg-slate-700 p-2 rounded-full hover:bg-slate-600">

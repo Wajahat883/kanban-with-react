@@ -6,10 +6,15 @@ import soloing from "../Hooks/solo.jpg"
 
 function AvatarDropdown (){
      const {theme,toggleTheme}=useContext(ThemeContext);
-     const {user,logout}=useAuth()
+     const {logout}=useAuth()
      const [open,setopen]=useState(false)
      const dropdownref =useRef(null)
      const navigate =useNavigate();
+
+const storedUser = JSON.parse(localStorage.getItem("user"))
+const username = storedUser?.username||"Guest"
+const email = storedUser?.email||"No email found"
+
      useEffect(()=>{
         const handleClickOutside=(event)=>{
             if(dropdownref.current&&!dropdownref.current.contains(event.target)){
@@ -33,8 +38,8 @@ function AvatarDropdown (){
             {open&&(
                <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 text-black dark:text-white border dark:border-gray-700 shadow-xl rounded-md z-50">
           <div className="p-4 border-b dark:border-gray-600">
-            <p className="font-semibold">{user?.username}</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">{user?.email}</p>
+            <p className="font-semibold">{username}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{email}</p>
           </div>
           <div className="p-2">
             <button

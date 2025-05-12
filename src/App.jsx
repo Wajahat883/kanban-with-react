@@ -1,73 +1,62 @@
-import { BrowserRouter as Router, Routes, Route, useLocation, Navigate} from "react-router-dom";
-import Sidebar from "./pages/navbar/Sidebar";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import KanbanBoard from "./pages/navbar/KanbanBoard";
-import Login from './pages/loginpage/Login';
+import Login from "./pages/loginpage/Login";
 import Signup from "./pages/loginpage/signup";
 import Board from "./pages/loginpage/Board";
-import Dashboard from './pages/navbar/Dashboard';
-import Navbar from "./pages/navbar/Navbar";
+import Dashboard from "./pages/navbar/Dashboard";
 import ProtectedRoute from "./pages/navbar/ProtectedRoute";
+import AppLayout from "./pages/navbar/Applayout";
 import { TaskProvider } from './pages/Hooks/TaskContext';
 import { ToastContainer } from "react-toastify";
 import { ThemeProvider } from "./pages/Hooks/ThemeContext";
 import 'react-toastify/dist/ReactToastify.css';
 
-function Layout() {
-  const location = useLocation();
-  const hideSidebarRoutes = ['/', '/signup','/login'];
-  const shouldHideSidebar = hideSidebarRoutes.includes(location.pathname);
-
-  return (
-    <div className="flex">
-      {!shouldHideSidebar && <Sidebar />}
-      <div className={shouldHideSidebar ? "flex-1 ml-0" : "flex-1 ml-64"}>
-        {!shouldHideSidebar && <Navbar />}
-        <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
-         <Route path="/login" element={<Login />} />
-         <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          } />
-          <Route path="/kanban" element={
-            <ProtectedRoute>
-              <KanbanBoard />
-            </ProtectedRoute>
-          } />
-          <Route path="/board" element={
-            <ProtectedRoute>
-              <Board />
-            </ProtectedRoute>
-          } />
-          <Route path="/tasks" element={
-            <ProtectedRoute>
-              <div>Tasks Page</div>
-            </ProtectedRoute>
-          } />
-          <Route path="/issues" element={
-            <ProtectedRoute>
-              <div>Issues Page</div>
-            </ProtectedRoute>
-          } />
-          <Route path="*" element={<div className="p-6">404 - Not Found</div>} />
-        </Routes>
-      </div>
-    </div>
-  );
-}
-
 function App() {
   return (
     <Router>
-          <ThemeProvider className="min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white">
-          <TaskProvider> 
-        <Layout />
-        <ToastContainer position="top-right" autoClose={3000} />
-      </TaskProvider>
-          </ThemeProvider>
-     
+      <ThemeProvider>
+        <TaskProvider>
+          <Routes>
+
+            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+
+            <Route element={<AppLayout />}>
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="/kanban" element={
+                <ProtectedRoute>
+                  <KanbanBoard />
+                </ProtectedRoute>
+              } />
+              <Route path="/board" element={
+                <ProtectedRoute>
+                  <Board />
+                </ProtectedRoute>
+              } />
+              <Route path="/tasks" element={
+                <ProtectedRoute>
+                  <div>Tasks Page</div>
+                </ProtectedRoute>
+              } />
+              <Route path="/issues" element={
+                <ProtectedRoute>
+                  <div>Issues Page</div>
+                </ProtectedRoute>
+              } />
+            </Route>
+
+       
+            <Route path="*" element={<div className="p-6">404 - Not Found</div>} />
+
+          </Routes>
+          <ToastContainer position="top-right" autoClose={3000} />
+        </TaskProvider>
+      </ThemeProvider>
     </Router>
   );
 }
