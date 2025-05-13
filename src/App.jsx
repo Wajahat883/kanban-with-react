@@ -9,10 +9,12 @@ import { TaskProvider } from './pages/Hooks/TaskContext';
 import { ToastContainer } from "react-toastify";
 import { ThemeProvider } from "./pages/Hooks/ThemeContext";
 import 'react-toastify/dist/ReactToastify.css';
+import { DashboardProvider } from "./pages/Hooks/DashoardConext";
 
 function App() {
   return (
-    <Router>
+    <DashboardProvider>
+<Router>
       <ThemeProvider>
         <TaskProvider>
           <Routes>
@@ -53,6 +55,8 @@ function App() {
         </TaskProvider>
       </ThemeProvider>
     </Router>
+    </DashboardProvider>
+    
   );
 }
 

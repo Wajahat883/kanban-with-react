@@ -63,7 +63,7 @@ export default function KanbanBoard() {
               <div
                 ref={provided.innerRef}
                 {...provided.droppableProps}
-                className="bg-gray-200 dark:bg-gray-700 p-4 rounded-lg w-80 min-h-[400px] shadow-md"
+                className="bg-gray-200 dark:bg-gray-700 p-4 rounded-lg w-80 min-h-[400px] shadow-md text-black dark:text-white"
               >
                 <div className="flex justify-between items-center mb-2">
                   <h3 className="font-bold text-lg capitalize">{col}</h3>
@@ -78,39 +78,42 @@ export default function KanbanBoard() {
                 </div>
 
                 {showForm && col === "all" && (
-                  <div className="bg-white p-3 rounded shadow mb-3 space-y-2">
-                    <input
-                      type="text"
-                      placeholder="Title"
-                      className="w-full p-1 border rounded"
-                      value={newTask.title}
-                      onChange={(e) =>
-                        setNewTask({ ...newTask, title: e.target.value })
-                      }
-                    />
-                    <textarea
-                      placeholder="Description"
-                      className="w-full p-1 border rounded"
-                      value={newTask.description}
-                      onChange={(e) =>
-                        setNewTask({ ...newTask, description: e.target.value })
-                      }
-                    />
-                    <input
-                      type="date"
-                      className="w-full p-1 border rounded"
-                      value={newTask.date}
-                      onChange={(e) =>
-                        setNewTask({ ...newTask, date: e.target.value })
-                      }
-                    />
-                    <button
-                      onClick={addTask}
-                      className="bg-teal-600 text-white px-3 py-1 rounded hover:bg-teal-700"
-                    >
-                      Add Task
-                    </button>
-                  </div>
+                   <form
+    onSubmit={(e) => {
+      e.preventDefault(); 
+      addTask(); 
+    }}
+     className="bg-white dark:bg-gray-900 p-3 rounded shadow mb-3 space-y-2"
+  >
+    <input
+      type="text"
+      placeholder="Title"
+      required
+       className="w-full p-1 border rounded text-black dark:text-white"
+      value={newTask.title}
+      onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
+    />
+    <textarea
+      placeholder="Description"
+      required
+      className="w-full p-1 border rounded text-black dark:text-white"
+      value={newTask.description}
+      onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}
+    />
+    <input
+      type="date"
+      required
+       className="w-full p-1 border rounded text-black dark:text-white bg-white dark:bg-gray-800"
+      value={newTask.date}
+      onChange={(e) => setNewTask({ ...newTask, date: e.target.value })}
+    />
+    <button
+      type="submit"
+      className="bg-teal-600 text-white px-3 py-1 rounded hover:bg-teal-700"
+    >
+      Add Task
+    </button>
+  </form>
                 )}
 
                 {tasks[col]?.map((task, index) => (

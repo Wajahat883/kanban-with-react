@@ -6,11 +6,14 @@ import { AuthProvider } from './pages/auth-context.jsx';
 
 
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   
  <AuthProvider>
 
-    <App/>
+ <App/>
+
+   
   
     
  

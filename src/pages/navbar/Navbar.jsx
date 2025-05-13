@@ -70,45 +70,59 @@ const Navbar = () => {
                 className="bg-blue-600 flex items-center gap-1 px-3 py-1 rounded hover:bg-blue-500"
               >
                 <Plus size={16} />
-                Add Task
+              New-Project
               </button>
             )}
 
-            {showPopup && (
-              <div
-                ref={popupRef} 
-                className="absolute top-full mt-2 right-0 bg-white border rounded shadow-lg p-4 w-80 z-50"
-              >
-                <form onSubmit={handleSubmit} className="space-y-3">
-                  <h2 className="text-lg font-bold items-center text-black">Add Task</h2>
-                  <input
-                    type="text"
-                    placeholder="Title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    className="w-full border px-3 py-1 rounded text-black"
-                    required
-                  />
-                  <input
-                    type="text"
-                    placeholder="Description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    className="w-full border px-3 py-1 rounded text-black"
-                  />
-                  <input
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    className="w-full border px-3 py-1 rounded text-black"
-                  />
-                  <div className="flex justify-between">
-                    <button type="submit" className="bg-blue-600 text-white px-4 py-1 rounded">Add</button>
-                    <button type="button" onClick={() => setShowPopup(false)} className="text-red-500">Cancel</button>
-                  </div>
-                </form>
-              </div>
-            )}
+           {showPopup && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center">
+    
+    <div
+  className="absolute inset-0 bg-[rgba(0,0,0,0.4)] backdrop-blur-sm"
+  onClick={() => setShowPopup(false)}
+></div>
+
+
+    <div
+      ref={popupRef}
+      className="relative bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-xl shadow-xl p-6 w-[90%] max-w-md z-50"
+    >
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <h2 className="text-xl font-semibold text-black dark:text-white text-center">New-Project</h2>
+        
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="w-full border px-3 py-2 rounded text-black dark:text-white "
+          required
+        />
+
+        <input
+          type="text"
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="w-full border px-3 py-2 rounded text-black dark:text-white"
+        />
+
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          className="w-full border px-3 py-2 rounded text-black dark:text-white"
+        />
+
+        <div className="flex justify-between">
+          <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Add</button>
+          <button type="button" onClick={() => setShowPopup(false)} className="text-red-500 hover:underline">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
+
           </div>
 
           {!user ? (
