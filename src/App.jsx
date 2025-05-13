@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import { ThemeProvider } from "./pages/Hooks/ThemeContext";
 import 'react-toastify/dist/ReactToastify.css';
 import { DashboardProvider } from "./pages/Hooks/DashoardConext";
+import Taskcard from "./pages/navbar/Taskcard";
 
 function App() {
   return (
@@ -37,7 +38,7 @@ function App() {
              
               <Route path="/tasks" element={
                 <ProtectedRoute>
-                  <div>Tasks Page</div>
+                 <Taskcard/>
                 </ProtectedRoute>
               } />
               <Route path="/issues" element={
