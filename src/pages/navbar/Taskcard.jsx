@@ -5,15 +5,15 @@ export default function TaskCard() {
   const { tasks } = useTask();
 
   return (
-    <div className="taskcard-container flex w-4xl gap-2">
+    <div className="taskcard-container flex flex-wrap justify-center p-4  gap-2">
       {tasks.all.map((task) => (
-        <div key={task.id} className="taskcard bg-white dark:bg-gray-800 p-4 mb-4 rounded shadow w-3xl">
-          <h3 className="font-bold">{task.title}</h3>
+        <div key={task.id} className="taskcard bg-white dark:bg-gray-800 p-4  rounded shadow-md w-full sm:w-[48%] lg:w-[30%] max-w-md">
+          <h3 className="font-bold text-lg mb-1 text-gray-800 dark:text-white">{task.title}</h3>
           <p>{task.description}</p>
-          <p className="text-xs text-gray-500">Due: {task.date}</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">Due: {task.date}</p>
           
         
-          <p className={`text-sm font-semibold mt-2 ${
+          <p className={`text-sm font-semibold  ${
             task.status === "pending" ? "text-green-600" : "text-yellow-600"
           }`}>
             Status: {task.status}
