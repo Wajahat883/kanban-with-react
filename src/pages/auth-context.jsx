@@ -33,6 +33,7 @@ function AuthProvider({ children }) {
     }
 
     setCurrentUser(userExits);
+    localStorage.setItem("user",JSON.stringify(userExits))
   };
 
   const signup = (username, password, email) => {
@@ -51,6 +52,7 @@ function AuthProvider({ children }) {
 
   const logout = () => {
     setCurrentUser(null); 
+    localStorage.removeItem("user")
   };
 
   return (

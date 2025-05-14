@@ -14,6 +14,8 @@ function AvatarDropdown (){
 const storedUser = JSON.parse(localStorage.getItem("user"))
 const username = storedUser?.username||"Guest"
 const email = storedUser?.email||"No email found"
+const role = storedUser?.role ||"Project-Manager"
+const avatar =storedUser?.avatar||soloing;
 
      useEffect(()=>{
         const handleClickOutside=(event)=>{
@@ -37,10 +39,19 @@ const email = storedUser?.email||"No email found"
             </button>
             {open&&(
                <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 text-black dark:text-white border dark:border-gray-700 shadow-xl rounded-md z-50">
-          <div className="p-4 border-b dark:border-gray-600">
-            <p className="font-semibold">{username}</p>
+          <div className="p-4 border-b dark:border-gray-600 ">
+            <div className="p-2 dark:border-gray-600 flex items-center gap-4">
+  <img
+    src={avatar}
+    alt="user avatar"
+    className="w-9 h-9 rounded-full object-cover border-2 border-white overflow-hidden  "
+  />
+            <p className="font-semibold ">{username}</p>
+            </div>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{role}</p>
             <p className="text-sm text-gray-500 dark:text-gray-400">{email}</p>
           </div>
+          
           <div className="p-2">
            <button
              onClick={toggleTheme}
