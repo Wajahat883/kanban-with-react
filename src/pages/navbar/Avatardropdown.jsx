@@ -38,30 +38,30 @@ const avatar =storedUser?.avatar||soloing;
 
             </button>
             {open&&(
-               <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 text-black dark:text-white border dark:border-gray-700 shadow-xl rounded-md z-50">
+               <div className="absolute right-0 mt-2 w-64 max-[90vw] sm:w-72 bg-white dark:bg-slate-800 text-black dark:text-white border dark:border-gray-700 shadow-xl rounded-md z-50">
           <div className="p-4 border-b dark:border-gray-600 ">
             <div className="p-2 dark:border-gray-600 flex items-center gap-4">
-  <img
+  <img 
     src={avatar}
     alt="user avatar"
-    className="w-9 h-9 rounded-full object-cover border-2 border-white overflow-hidden  "
+    className="w-10 h-10 rounded-full object-cover border-2 border-white  "
   />
-            <p className="font-semibold ">{username}</p>
+            <p className="font-semibold text-base">{username}</p>
             </div>
             <p className="text-sm text-gray-500 dark:text-gray-400">{role}</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">{email}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 truncate max-w-[14rem]">{email}</p>
           </div>
           
           <div className="p-2">
            <button
              onClick={toggleTheme}
-               className="w-full text-left px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
+               className="w-full text-left px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-sm"
                 >
               Toggle {theme === "dark" ? "Light Mode" : "Dark Mode"} 
               </button>
             <button
               onClick={handleLogout}
-              className="w-full text-left px-3 py-2 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="w-full text-left px-3 py-2 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-sm"
             >
               Logout
             </button>
