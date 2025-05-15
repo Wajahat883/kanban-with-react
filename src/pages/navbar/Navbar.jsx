@@ -1,6 +1,6 @@
 // Navbar.jsx
 import { useState, useRef, useEffect } from "react";
-import { Plus } from "lucide-react";
+import { Plus,Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTask } from "../Hooks/TaskContext";
 import { useAuth } from "../Hooks/useAuth";
@@ -14,6 +14,7 @@ const Navbar = ({toggleSidebar}) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
+  const [searchQuery,setsearchquery]=useState("")
 
   const popupRef = useRef(null);
 
@@ -27,6 +28,13 @@ const Navbar = ({toggleSidebar}) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+const handleSearch =(e)=>{
+  e.preventDefault()
+  if(searchQuery.trim()==="")return
+  console.log("searching for:", searchQuery)
+  setsearchquery("")
+}
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,6 +66,27 @@ const Navbar = ({toggleSidebar}) => {
         </button>
 
         <h1 className="text-xl font-bold">Kanban Board</h1>
+      <div>
+  <form
+    onSubmit={handleSearch}
+    className="flex items-center border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden bg-white dark:bg-gray-700"
+  >
+    <input
+      type="text"
+      placeholder="Search from the web"
+      value={searchQuery}
+      onChange={(e) => setsearchquery(e.target.value)}
+      className="px-3 py-1.5 text-sm focus:outline-none dark:bg-gray-700 dark:text-white"
+    />
+    <button
+      type="submit"
+      className="bg-blue-600 hover:bg-blue-700 text-white p-2"
+    >
+      <Search className="h-4 w-4" />
+    </button>
+  </form>
+</div>
+
 
         <div className="flex items-center gap-3 flex-row">
           {user && (
@@ -145,6 +174,9 @@ const Navbar = ({toggleSidebar}) => {
           )}
         </div>
       </header>
+      
+
+
     </div>
   );
 };
