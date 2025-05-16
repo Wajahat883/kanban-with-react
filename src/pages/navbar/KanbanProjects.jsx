@@ -112,7 +112,7 @@ export default function KanbanBoard() {
                     />
                     <input
                       type="date"
-                      required
+                    
                       className="w-full p-1 border rounded text-black dark:text-white bg-white dark:bg-gray-800"
                       value={newTask.date}
                       onChange={(e) =>
