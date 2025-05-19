@@ -17,5 +17,5 @@ export const searchWeb = async (query) => {
   }
 };
 
-// 👇 Add this line temporarily
+
 window.searchWeb = searchWeb;

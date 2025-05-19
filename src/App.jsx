@@ -11,6 +11,7 @@ import { ThemeProvider } from "./pages/Hooks/ThemeContext";
 import 'react-toastify/dist/ReactToastify.css';
 import { DashboardProvider } from "./pages/Hooks/DashoardConext";
 import Taskcard from "./pages/navbar/Taskcard";
+import TeamsPage from "./pages/navbar/Team";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
                 </ProtectedRoute>
               } />
             </Route>
+            <Route path="/teams" element={<TeamsPage />} />
 
        
             <Route path="*" element={<div className="p-6">404 - Not Found</div>} />
