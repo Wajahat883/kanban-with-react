@@ -2,6 +2,7 @@ import { useState,useRef,useEffect,useContext } from "react";
 import { ThemeContext } from "../Hooks/ThemeContext";
 import { useAuth } from "../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { Sun, Moon } from 'lucide-react';
 import soloing from "../Hooks/solo.jpg"
 
 function AvatarDropdown (){
@@ -57,7 +58,7 @@ const avatar =storedUser?.avatar||soloing;
              onClick={toggleTheme}
                className="w-full text-left px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-sm"
                 >
-              Toggle {theme === "dark" ? "Light Mode" : "Dark Mode"} 
+           {theme === "dark" ? <Sun/> : <Moon/>} 
               </button>
             <button
               onClick={handleLogout}

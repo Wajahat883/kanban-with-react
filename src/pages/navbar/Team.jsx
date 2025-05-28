@@ -72,7 +72,7 @@ const TeamsPage = () => {
         </form>
       )}
 
-      {/* Table layout */}
+   
       <div className="overflow-x-auto">
         <table className="min-w-full table-auto border border-gray-300 dark:border-gray-700 rounded-lg">
           <thead className="bg-gray-200 dark:bg-gray-700 text-left">
