@@ -47,8 +47,15 @@ function App() {
                   <div>Issues Page</div>
                 </ProtectedRoute>
               } />
+              <Route path="/teams" element={
+                 <ProtectedRoute>
+                   <TeamsPage />
+                 </ProtectedRoute>
+             
+              } />
             </Route>
-            <Route path="/teams" element={<TeamsPage />} />
+            
+           
 
        
             <Route path="*" element={<div className="p-6">404 - Not Found</div>} />
