@@ -1,6 +1,6 @@
 
 import { SortableItem } from "./SortableItem"
-import { Plus,Tag,X } from "lucide-react"
+import { Plus,X } from "lucide-react"
 import { useState } from "react"
 
 const initialData = [

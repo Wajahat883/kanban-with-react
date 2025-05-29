@@ -1,11 +1,16 @@
 // PopupForm.jsx
 import { useEffect, useRef, useState } from "react";
+import { teams } from "./teamspage";
 
 const PopupForm = ({ onClose, onSubmit }) => {
   const popupRef = useRef(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
+ const [newTask, setNewTask] = useState({
+    member: "",
+  });
+
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -21,10 +26,12 @@ const PopupForm = ({ onClose, onSubmit }) => {
     e.preventDefault();
     if (!title.trim()) return;
 
-    onSubmit({ title, description, date });
+    onSubmit({ title, description, date, member: newTask.member  });
     setTitle("");
     setDescription("");
     setDate("");
+    setNewTask({ member: "" });
+
   };
 
   return (
@@ -66,6 +73,19 @@ const PopupForm = ({ onClose, onSubmit }) => {
             onChange={(e) => setDate(e.target.value)}
             className="w-full border border-gray-300 dark:border-gray-600 px-3 py-2 rounded text-black dark:text-white"
           />
+             <select value={newTask.member}
+                              onChange={(e)=>setNewTask({...newTask,member:e.target.value})
+                            }
+                            className=" w-full p-1 border rounded
+    text-black dark:text-white
+    bg-white dark:bg-gray-800
+    border-gray-300 dark:border-gray-600
+    appearance-none"required>
+                              <option value="">Select Member</option>
+                              {teams.map((team)=>team.members.map((member)=>(<option  className="text-black dark:text-white" key={member} value={member}>
+                                {member}({team.name})
+                              </option>)))}
+                            </select>
 
           <div className="flex justify-between">
             <button

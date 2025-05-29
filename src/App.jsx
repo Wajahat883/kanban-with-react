@@ -12,6 +12,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { DashboardProvider } from "./pages/Hooks/DashoardConext";
 import Taskcard from "./pages/navbar/Taskcard";
 import TeamsPage from "./pages/navbar/Team";
+import Reports from "./pages/navbar/Reporter";
+import Calendar from "./pages/navbar/Calender"
 
 function App() {
   return (
@@ -50,6 +52,18 @@ function App() {
               <Route path="/teams" element={
                  <ProtectedRoute>
                    <TeamsPage />
+                 </ProtectedRoute>
+             
+              } />
+              <Route path="/reports" element={
+                 <ProtectedRoute>
+                   < Reports />
+                 </ProtectedRoute>
+             
+              } />
+              <Route path="/calendar" element={
+                 <ProtectedRoute>
+                   <    Calendar />
                  </ProtectedRoute>
              
               } />

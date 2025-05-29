@@ -32,12 +32,7 @@ const SecondaryNavbar = () => {
         >
           Calendar
         </Link>
-        <Link
-          to="/settings"
-          className={`${isActive("/settings") ? "text-blue-600 font-bold" : ""} hover:text-blue-600 dark:hover:text-blue-400`}
-        >
-          Settings
-        </Link>
+      
       </div>
     </nav>
   );

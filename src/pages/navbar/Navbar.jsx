@@ -41,7 +41,7 @@ const Navbar = ({ toggleSidebar }) => {
               className="bg-blue-600 flex items-center gap-1 px-3 py-1 rounded hover:bg-blue-500 text-white"
             >
               <Plus size={16} />
-              New Project
+              Add Task
             </button>
           )}
 

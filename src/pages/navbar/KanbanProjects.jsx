@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { useTask } from "../Hooks/TaskContext";
 import { Plus } from "lucide-react";
+import { teams } from "./teamspage";
 
 export default function KanbanBoard() {
   const { tasks, setTasks } = useTask();
@@ -10,6 +11,7 @@ export default function KanbanBoard() {
     title: "",
     description: "",
     date: "",
+    member:"",
   });
 
   const onDragEnd = (result) => {
@@ -44,6 +46,7 @@ export default function KanbanBoard() {
       title: newTask.title,
       description: newTask.description,
       date: newTask.date,
+      member:newTask.member,
       status: "all",
     };
 
@@ -119,6 +122,19 @@ export default function KanbanBoard() {
                         setNewTask({ ...newTask, date: e.target.value })
                       }
                     />
+                    <select value={newTask.member}
+                    onChange={(e)=>setNewTask({...newTask,member:e.target.value})
+                  }
+                  className="w-full p-1 border   
+    text-black dark:text-white
+    bg-white dark:bg-gray-800
+    border-gray-300 dark:border-gray-600
+    appearance-none"required>
+                    <option value="">Select Member</option>
+                    {teams.map((team)=>team.members.map((member)=>(<option  className="text-black dark:text-white" key={member} value={member}>
+                      {member}({team.name})
+                    </option>)))}
+                  </select>
                     <button
                       type="submit"
                       className="bg-teal-600 text-white px-3 py-1 rounded hover:bg-teal-700"
