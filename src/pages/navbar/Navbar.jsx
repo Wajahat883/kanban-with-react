@@ -7,6 +7,7 @@ import { useAuth } from "../Hooks/useAuth";
 import AvatarDropdown from "../navbar/Avatardropdown";
 import SearchBar from "./SearchBar";
 import PopupForm from "./PopupForm";
+import Helpdesk from "./Help";
 
 const Navbar = ({ toggleSidebar }) => {
   const { addTask } = useTask();
@@ -33,12 +34,25 @@ const Navbar = ({ toggleSidebar }) => {
         </h1>
 
         <SearchBar />
+       
+         
+       
 
     <div className="flex items-center gap-4">
+      <div>
+      <button className=" border rounded-2xl p-1 hover:bg-gray-700 border-gray-400">Buynow</button>
+     
+      </div>
+      
+        <Helpdesk/>
+     
+     
   <Notifications
     onClick={() => console.log("Notification clicked")}
     hasUnread={true} 
   />
+
+
   {!user ? (
     <>
       <Link to="/" className="hover:underline">

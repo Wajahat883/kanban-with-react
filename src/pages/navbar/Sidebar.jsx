@@ -14,25 +14,25 @@ export default function Sidebar({ closeSidebar }) {
       <nav>
         <ul className="space-y-3">
           <li>
-            <Link to="/dashboard" className="hover:bg-gray-700 flex items-center gap-2 px-3 py-2 rounded">
+            <Link to="/dashboard" className="hover:text-blue-600 dark:hover:text-blue-400 font-bold flex items-center gap-2 px-3 py-2 rounded">
               <Home size={20} className="text-gray-800 dark:text-white" />
               Dashboard
             </Link>
           </li>
            <li>
-            <Link to="/kanban" className="hover:bg-gray-700 flex items-center gap-2 px-3 py-2 rounded">
+            <Link to="/kanban" className="hover:text-blue-600 dark:hover:text-blue-400 font-bold flex items-center gap-2 px-3 py-2 rounded">
              Kanban-Projects
             </Link>
           </li>
           <li>
-            <Link to="/tasks" className="hover:bg-gray-700 flex items-center gap-2 px-3 py-2 rounded">
+            <Link to="/tasks" className="hover:text-blue-600 dark:hover:text-blue-400 font-bold flex items-center gap-2 px-3 py-2 rounded">
            Tasks
             
             </Link>
           </li>
          
            <li>
-            <Link to="/issues" className="hover:bg-gray-700 flex items-center gap-2 px-3 py-2 rounded">
+            <Link to="/issues" className="hover:text-blue-600 dark:hover:text-blue-400 font-bold flex items-center gap-2 px-3 py-2 rounded">
             Issues
             </Link>
           </li>

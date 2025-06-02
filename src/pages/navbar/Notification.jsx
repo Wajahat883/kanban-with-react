@@ -26,12 +26,12 @@ const Notifications = () => {
   }, []);
 
   return (
-    <div className="relative  dark:bg-black" ref={popupRef}>
+    <div className="relative  " ref={popupRef}>
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="cursor-pointer relative  dark:bg-black"
+        className="cursor-pointer relative "
       >
-        <Bell className=" dark:bg-gray-800 text-black dark:text-white " />
+        <Bell className=" text-black dark:text-white " />
         {dummyNotifications.length > 0 && (
           <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
         )}
