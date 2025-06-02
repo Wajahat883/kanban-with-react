@@ -1,16 +1,25 @@
-// PopupForm.jsx
+
+
+
+
 import { useEffect, useRef, useState } from "react";
-import { teams } from "./teamspage";
+
 
 const PopupForm = ({ onClose, onSubmit }) => {
   const popupRef = useRef(null);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [date, setDate] = useState("");
- const [newTask, setNewTask] = useState({
+  const [newTask, setNewTask] = useState({
+    title: "",
+    description: "",
+    date: "",
     member: "",
+    category: "",
   });
 
+  const categories = [
+    { id: "marketing", name: "Marketing" },
+    { id: "store-design", name: "Store Design" },
+    { id: "development", name: "Development" },
+  ];
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -24,14 +33,16 @@ const PopupForm = ({ onClose, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title.trim()) return;
+    if (!newTask.title.trim() || !newTask.category) return;
+    onSubmit(newTask);
 
-    onSubmit({ title, description, date, member: newTask.member  });
-    setTitle("");
-    setDescription("");
-    setDate("");
-    setNewTask({ member: "" });
-
+    setNewTask({
+      title: "",
+      description: "",
+      date: "",
+      member: "",
+      category: "",
+    });
   };
 
   return (
@@ -47,14 +58,16 @@ const PopupForm = ({ onClose, onSubmit }) => {
       >
         <form onSubmit={handleSubmit} className="space-y-4">
           <h2 className="text-xl font-semibold text-center text-black dark:text-white">
-            New Project
+            New Task
           </h2>
 
           <input
             type="text"
             placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={newTask.title}
+            onChange={(e) =>
+              setNewTask({ ...newTask, title: e.target.value })
+            }
             className="w-full border border-gray-300 dark:border-gray-600 px-3 py-2 rounded text-black dark:text-white"
             required
           />
@@ -62,30 +75,37 @@ const PopupForm = ({ onClose, onSubmit }) => {
           <input
             type="text"
             placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={newTask.description}
+            onChange={(e) =>
+              setNewTask({ ...newTask, description: e.target.value })
+            }
             className="w-full border border-gray-300 dark:border-gray-600 px-3 py-2 rounded text-black dark:text-white"
           />
 
           <input
             type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
+            value={newTask.date}
+            onChange={(e) =>
+              setNewTask({ ...newTask, date: e.target.value })
+            }
             className="w-full border border-gray-300 dark:border-gray-600 px-3 py-2 rounded text-black dark:text-white"
           />
-             <select value={newTask.member}
-                              onChange={(e)=>setNewTask({...newTask,member:e.target.value})
-                            }
-                            className=" w-full p-1 border rounded
-    text-black dark:text-white
-    bg-white dark:bg-gray-800
-    border-gray-300 dark:border-gray-600
-    appearance-none"required>
-                              <option value="">Select Member</option>
-                              {teams.map((team)=>team.members.map((member)=>(<option  className="text-black dark:text-white" key={member} value={member}>
-                                {member}({team.name})
-                              </option>)))}
-                            </select>
+
+          <select
+            value={newTask.category}
+            onChange={(e) =>
+              setNewTask({ ...newTask, category: e.target.value })
+            }
+            required
+            className="w-full p-1 border rounded text-black dark:text-white bg-white dark:bg-gray-800"
+          >
+            <option value="">Select Category</option>
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
 
           <div className="flex justify-between">
             <button

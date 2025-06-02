@@ -83,7 +83,7 @@ export default function Reports() {
         <Bar data={barData} />
       </div>
 
-      <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "400px", margin: "0 auto" }}>
         <h2>Tasks by Member (Pie Chart)</h2>
         <Pie data={pieData} />
       </div>

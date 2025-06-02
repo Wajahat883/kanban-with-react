@@ -13,6 +13,7 @@ export const SortableItem = ({  task }) => {
       <div className="font-semibold">{task.title}</div>
       <div className="text-xs text-gray-500 mt-1">Due: {task.due}</div>
       <div className="text-xs text-gray-600 mt-1">👤 {task.member}</div>
+      <div className="text-xs text-gray-600 mt-1">👤 {task.status}</div>
       {task.file && (
         <div className="text-xs text-purple-500 mt-1">📎 {task.file}</div>
       )}

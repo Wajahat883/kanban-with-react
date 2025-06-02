@@ -1,6 +1,6 @@
 // Navbar.jsx
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import Notifications from "./Notification";
 import { Link } from "react-router-dom";
 import { useTask } from "../Hooks/TaskContext";
 import { useAuth } from "../Hooks/useAuth";
@@ -34,30 +34,25 @@ const Navbar = ({ toggleSidebar }) => {
 
         <SearchBar />
 
-        <div className="flex items-center gap-3 flex-row">
-          {user && (
-            <button
-              onClick={() => setShowPopup(!showPopup)}
-              className="bg-blue-600 flex items-center gap-1 px-3 py-1 rounded hover:bg-blue-500 text-white"
-            >
-              <Plus size={16} />
-              Add Task
-            </button>
-          )}
+    <div className="flex items-center gap-4">
+  <Notifications
+    onClick={() => console.log("Notification clicked")}
+    hasUnread={true} 
+  />
+  {!user ? (
+    <>
+      <Link to="/" className="hover:underline">
+        Login
+      </Link>
+      <Link to="/signup" className="hover:underline">
+        Signup
+      </Link>
+    </>
+  ) : (
+    <AvatarDropdown />
+  )}
+</div>
 
-          {!user ? (
-            <>
-              <Link to="/" className="hover:underline">
-                Login
-              </Link>
-              <Link to="/signup" className="hover:underline">
-                Signup
-              </Link>
-            </>
-          ) : (
-            <AvatarDropdown />
-          )}
-        </div>
       </header>
 
       {showPopup && <PopupForm onClose={() => setShowPopup(false)} onSubmit={handleAddTask} />}

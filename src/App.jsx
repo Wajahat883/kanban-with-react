@@ -63,7 +63,7 @@ function App() {
               } />
               <Route path="/calendar" element={
                  <ProtectedRoute>
-                   <    Calendar />
+                   <Calendar />
                  </ProtectedRoute>
              
               } />

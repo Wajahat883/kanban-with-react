@@ -2,7 +2,7 @@ import { useState,useRef,useEffect,useContext } from "react";
 import { ThemeContext } from "../Hooks/ThemeContext";
 import { useAuth } from "../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon,User,LayoutDashboard,Settings } from 'lucide-react';
 import soloing from "../Hooks/solo.jpg"
 
 function AvatarDropdown (){
@@ -51,15 +51,36 @@ const avatar =storedUser?.avatar||soloing;
             </div>
             <p className="text-sm text-gray-500 dark:text-gray-400">{role}</p>
             <p className="text-sm text-gray-500 dark:text-gray-400 truncate max-w-[14rem]">{email}</p>
+             <button className="text-blue-500 text-xs underline mt-1">
+              Switch accounts
+            </button>
           </div>
+          <ul className="py-2 text-sm">
+            <li className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer flex items-center gap-2">
+              <User size={16} />
+              <span>Profile and visibility</span>
+            </li>
+            <li className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer flex items-center gap-2">
+              <LayoutDashboard size={16} />
+              <span>Activity</span>
+            </li>
+           
+            <li className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer flex items-center gap-2">
+              <Settings size={16} />
+              <span>Settings</span>
+            </li>
+          </ul>
+
           
-          <div className="p-2">
+          
+          <div>
            <button
              onClick={toggleTheme}
                className="w-full text-left px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-sm"
                 >
            {theme === "dark" ? <Sun/> : <Moon/>} 
               </button>
+
             <button
               onClick={handleLogout}
               className="w-full text-left px-3 py-2 text-red-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-sm"
