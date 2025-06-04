@@ -21,7 +21,7 @@ export default function Sidebar({ closeSidebar }) {
           </li>
            <li>
             <Link to="/kanban" className="hover:text-blue-600 dark:hover:text-blue-400 font-bold flex items-center gap-2 px-3 py-2 rounded">
-             Kanban-Projects
+             Tasks-Projects
             </Link>
           </li>
           <li>

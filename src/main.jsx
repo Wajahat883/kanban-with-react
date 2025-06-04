@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App.jsx';
-import { AuthProvider } from './pages/auth-context.jsx';
+import App from './pages/components/layout/App.jsx';
+import {AuthProvider} from './pages/components/Avatardropdown/auth-context.jsx'
 import { RecoilRoot } from 'recoil';
 
 

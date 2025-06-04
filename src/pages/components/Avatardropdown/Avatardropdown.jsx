@@ -3,7 +3,7 @@ import { ThemeContext } from "../Hooks/ThemeContext";
 import { useAuth } from "../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { Sun, Moon,User,LayoutDashboard,Settings } from 'lucide-react';
-import soloing from "../Hooks/solo.jpg"
+import soloing from "../Avatardropdown/solo.jpg"
 
 function AvatarDropdown (){
      const {theme,toggleTheme}=useContext(ThemeContext);
